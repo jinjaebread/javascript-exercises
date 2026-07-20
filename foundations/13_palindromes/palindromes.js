@@ -1,17 +1,18 @@
 const palindromes = function (palindrome) {
     //paste word into new array but reversed and compare them
 
-    const reversed = palindrome
-                    .split('')
-                    .reverse()
-                    .join('')
-                    .filter((char) => {
-                        if (char === '!' || char === '?' || char === '.') {
-                            return -1;
-                        }
-                    });
+    const cleanUp = palindrome
+                        .toLowerCase()
+                        .split(/[\s,.!]/)
+                        .join('');
 
-    if (palindrome.toLowerCase() === reversed.toLowerCase()) {
+    const reversed = cleanUp
+                    //.split(/[\s,.!]/)
+                        .split('')
+                        .reverse()
+                        .join('');
+
+    if (cleanUp === reversed) {
         return true;
     }
     else 
